@@ -5,6 +5,7 @@ scikit-learn
 seaborn
 dvc
 mlflow==2.2.2
+xgboost
 
 # dev requirements -
 
