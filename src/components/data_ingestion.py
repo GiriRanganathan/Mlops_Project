@@ -18,7 +18,7 @@ class DataIngestion:
     def __init__(self):
         self.ingestion_config = DataIngestionConfig()
 
-    def initiate_date_ingestion(self):
+    def initiate_data_ingestion(self):
         logging.info("Data ingestion started")
         try:
             data = pd.read_csv(r"gcp_data/train.csv")
