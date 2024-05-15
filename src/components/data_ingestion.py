@@ -1,23 +1,55 @@
 import pandas as pd
 import numpy as np
 from src.logger.logging import logging
-from src.exception.exception import customexecption
+from src.exception.exception import customexception
 from dataclasses import dataclass
 from pathlib import Path
 import sys
 import os
+from sklearn.model_selection import train_test_split
 
 @dataclass
 class DataIngestionConfig:
-    pass
+    raw_data_path:str=os.path.join("artifacts","raw.csv")
+    train_data_path:str=os.path.join("artifacts","train.csv")
+    test_data_path:str=os.path.join("artifacts","test.csv")
 
 class DataIngestion:
     def __init__(self):
-        pass
+        self.ingestion_config = DataIngestionConfig()
 
     def initiate_date_ingestion(self):
+        logging.info("Data ingestion started")
         try:
-            pass
+            data = pd.read_csv(r"gcp_data/train.csv")
+            logging.info("reading the dataframe")
+
+            
+            os.makedirs(os.path.dirname(os.path.join(self.ingestion_config.raw_data_path)),exist_ok=True)
+            data.to_csv(self.ingestion_config.raw_data_path,index=False)
+            logging.info(" i have saved the raw dataset in artifact folder")
+            
+            logging.info("here i have performed train test split")
+            
+            train_data,test_data=train_test_split(data,test_size=0.25)
+            logging.info("train test split completed")
+            
+            train_data.to_csv(self.ingestion_config.train_data_path,index=False)
+            test_data.to_csv(self.ingestion_config.test_data_path,index=False)
+            
+            logging.info("data ingestion part completed")
+            
+            return (  
+                self.ingestion_config.train_data_path,
+                self.ingestion_config.test_data_path
+            )
+
+
         except Exception as e:
             logging.info()
-            raise customexecption(e,sys)
+            raise customexception(e,sys)
+        
+if __name__ == "__main__":
+    
+    obj = DataIngestion()
+    obj.initiate_date_ingestion()

@@ -18,3 +18,5 @@ mypy==0.971
 #gcp
 google-cloud-storage
 gcsfs
+
+-e .
