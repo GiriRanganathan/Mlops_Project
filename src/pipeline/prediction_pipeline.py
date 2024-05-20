@@ -7,13 +7,11 @@ from src.utils.utils import load_object
 
 
 class PredictPipeline:
-    def __new__(self):
-        print("new project")
 
     def __init__(self):
         print("mlops project")
 
-    def predict(self):
+    def predict(self,features):
         try:
             preprocessor_path=os.path.join("artifacts","preprocessor.pkl")
             model_path=os.path.join("artifacts","model.pkl")
@@ -72,4 +70,3 @@ class CustomData:
             logging.info('Exception Occured in prediction pipeline')
             raise customexception(e,sys)
     
-obj=PredictPipeline()
