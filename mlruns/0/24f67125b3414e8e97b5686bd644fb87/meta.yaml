@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/Mlops_Project/mlruns/0/24f67125b3414e8e97b5686bd644fb87/artifacts
+end_time: 1716482154995
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 24f67125b3414e8e97b5686bd644fb87
+run_name: agreeable-wolf-213
+run_uuid: 24f67125b3414e8e97b5686bd644fb87
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716482154977
+status: 3
+tags: []
+user_id: codespace

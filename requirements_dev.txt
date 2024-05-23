@@ -19,4 +19,5 @@ mypy==0.971
 google-cloud-storage
 gcsfs
 
+mlflow
 -e .
